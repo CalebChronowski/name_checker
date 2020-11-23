@@ -1,0 +1,28 @@
+{% block content %}
+
+<div class="formwrapper">
+    <h2 class="title">Person 1</h2>
+    <form method="POST" action="/">
+        <div class="form-field">
+            {{ form.firstname1.label }}
+            {{ form.firstname1(size=20) }}
+        </div>
+        <div class="form-field">
+            {{ form.lastname1.label }}
+            {{ form.lastname1(size=20) }}
+        </div>
+    <h2 class="title">Person 1</h2>
+    <form method="POST" action="/">
+        <div class="form-field">
+            {{ form.firstname1.label }}
+            {{ form.firstname1(size=20) }}
+        </div>
+        <div class="form-field">
+            {{ form.lastname1.label }}
+            {{ form.lastname1(size=20) }}
+        </div>
+        {{ form.submit }}
+    </form>
+</div>
+
+{% endblock %}

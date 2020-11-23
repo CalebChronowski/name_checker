@@ -6,35 +6,19 @@ from wtforms.validators import DataRequired, Length
 class NameInput(FlaskForm):
     """Contact form."""
     firstname1 = StringField(
-        'Person 1: first name',
-        [
-            DataRequired(),
-            length(max=25,
-            message='This name is too long.')
-        ]
+        'First name',
+        [DataRequired()]
     )
     lastname1 = StringField(
-        'Person 1: last name',
-        [
-            DataRequired(),
-            length(max=25,
-            message='This name is too long.')
-        ]
+        'Last name',
+        [DataRequired()]
     )
     firstname2 = StringField(
-        'Person 1: first name',
-        [
-            DataRequired(),
-            length(max=25,
-            message='This name is too long.')
-        ]
+        'First name',
+        [DataRequired()]
     )
     lastname2 = StringField(
-        'Person 1: first name',
-        [
-            DataRequired(),
-            length(max=25,
-            message='This name is too long.')
-        ]
+        'Last name',
+        [DataRequired()]
     )
     submit = SubmitField('Submit')
