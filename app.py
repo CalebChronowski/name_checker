@@ -15,21 +15,42 @@ import os
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+# App settings for development
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
+
 @app.route('/', methods=('GET', 'POST'))
-def contact():
+def home():
     form = NameInput()
     print('test')
     if form.validate_on_submit():
-        print('validate')
+        saveNames(form)
         return redirect(url_for('success'))
     return render_template(
         'index.html',
         form=form
     )
 
-@app.route('/<firstname1>/<lastname1>/<firstname2>/<lastname2>', methods=('Get', 'POST'))
+@app.route('/compare', methods=('Get', 'POST'))
 def success():
-    print(f"{firstname1} {lastname1} vs. {firstname2} {lastname2}")
+    try:
+        return (f"{NamesToCompare.first1} {NamesToCompare.last1} vs. {NamesToCompare.first2} {NamesToCompare.last2}")
+    except:
+        return redirect(url_for('home'))
+
+def saveNames(form):
+    global NamesToCompare
+    NamesToCompare = Name(form.firstname1, form.lastname1, form.firstname2, form.lastname2)
+    print('Names saved')
+
+class Name:
+    def __init__(self, fn1, ln1, fn2, ln2):
+        self.first1 = fn1._value()
+        self.last1 = ln1._value()
+        self.first2 = fn2._value()
+        self.last2 = ln2._value()
 
 if __name__ == '__main__':
-   app.run()
+    global NamesToCompare
+    app.run()

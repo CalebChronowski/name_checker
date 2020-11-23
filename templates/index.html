@@ -11,16 +11,17 @@
             {{ form.lastname1.label }}
             {{ form.lastname1(size=20) }}
         </div>
-    <h2 class="title">Person 1</h2>
+    <h2 class="title">Person 2</h2>
     <form method="POST" action="/">
         <div class="form-field">
-            {{ form.firstname1.label }}
-            {{ form.firstname1(size=20) }}
+            {{ form.firstname2.label }}
+            {{ form.firstname2(size=20) }}
         </div>
         <div class="form-field">
-            {{ form.lastname1.label }}
-            {{ form.lastname1(size=20) }}
+            {{ form.lastname2.label }}
+            {{ form.lastname2(size=20) }}
         </div>
+        {{ form.csrf_token }}
         {{ form.submit }}
     </form>
 </div>
